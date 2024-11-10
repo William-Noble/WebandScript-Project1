@@ -1,0 +1,29 @@
+<%- include('Partials/header.ejs') %>
+<%- include('Partials/main_nav.ejs') %>
+<main class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-10">
+            <h1><%= title %></h1>
+        <table class="table table-bordered table-striped table-hover">
+            <!--Table Header-->
+            <tr class="d-flex">
+                <th class="text-center col-2">Type</th>
+                <th class="text-center col-3">Time</th>
+                <th class="text-center col-2">Location</th>
+                <th class="col-5">Overview</th>
+                <th class="text-center col-2">Incident Status</th>
+            </tr>
+            <% for(let count=0;count<IncidentList.length;count++) { %>
+            <tr class="d-flex">
+                <td class="text-center col-2"><%= IncidentList[count].type %></td>
+                <td class="text-center col-3"><%= IncidentList[count].time %></td>
+                <td class="text-center col-2"><%= IncidentList[count].location %></td>
+                <td class="col-5"><%= IncidentList[count].overview %></td>
+                <td class="text-center col-2"><%= IncidentList[count].state %></td>
+            </tr>
+            <% } %>
+        </table>
+        </div>
+    </div>
+</main> 
+<%- include('Partials/footer.ejs') %>
