@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.home-page {
+    background: linear-gradient(180deg, #3A3959, #262525); 
+    height: 100vh; 
+    
+}
+
+.home-page h1{
+    text-align: center;
+    font-size:35px;
+    color: aliceblue;
+    font-weight: 600;
+}
+
+.home-page .container{
+    width:150px;
+    height:75px;
+    padding:15px;
+}
+
+.home-page .homeWrapper {
+    max-width: 800px;
+    margin: 20px auto;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    color: aliceblue;
+}
