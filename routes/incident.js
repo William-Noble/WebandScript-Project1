@@ -29,7 +29,7 @@ router.get('/add',async(req,res,next)=>{
             error:'Error on the server'
         })
     }
-})
+});
 router.post('/add',async(req,res,next)=>{
     try{
         let newIncident = incidentModel({
@@ -42,13 +42,13 @@ router.post('/add',async(req,res,next)=>{
             "state":req.body.state
         });
         incidentModel.create(newIncident).then(()=>{
-            res.redirect('incident/incidentList');
+            res.redirect('/incidents');
         })
     }
     catch(err)
     {
         console.error(err);
-        res.render('incident/IncidentList',{
+        res.render('/incidents',{
             error:'Error on the server'
         })
     }
@@ -74,8 +74,7 @@ router.get('/edit/:id',async(req,res,next)=>{
 router.post('/edit/:id',async(req,res,next)=>{
     try{
         let id=req.params.id;
-        let updatedIncident = incidentModel({
-            "_id":id,
+        let updatedIncident = {
             "type":req.body.type,
             "time":req.body.time,
             "location":req.body.location,
@@ -83,14 +82,14 @@ router.post('/edit/:id',async(req,res,next)=>{
             "overview":req.body.overview,
             "damages":req.body.damages,
             "state":req.body.state
-        });
-        incidentModel.findByIdAndUpdate(id,updatedIncident).then(()=>{
-            res.redirect('incident/incidentList')
+        };
+        await incidentModel.findByIdAndUpdate(id,updatedIncident).then(()=>{
+            res.redirect('/incidents')
         })
     }
     catch(err){
         console.error(err);
-        res.render('incident/incidentList',{
+        res.render('/incidents',{
             error:'Error on the server'
         })
     }
@@ -100,12 +99,12 @@ router.get('/delete/:id',async(req,res,next)=>{
     try{
         let id=req.params.id;
         incidentModel.deleteOne({_id:id}).then(()=>{
-            res.redirect('/incidentList')
+            res.redirect('/incidents')
         })
     }
     catch(err){
         console.error(err);
-        res.render('incident/incidentList',{
+        res.render('/incidents',{
             error:'Error on the server'
         })
     }
