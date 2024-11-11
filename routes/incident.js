@@ -12,7 +12,7 @@ router.get('/',async(req,res,next)=>{
     }
     catch(err){
         console.error(err)
-        res.render('incident/incident',{
+        res.render('incident/incidentList',{
             error:'Error on Server'})
     }
 })
@@ -32,15 +32,17 @@ router.get('/add',async(req,res,next)=>{
 })
 router.post('/add',async(req,res,next)=>{
     try{
-        let newIncident = Book({
-            "Name":req.body.Name,
-            "Author":req.body.Author,
-            "Published":req.body.Published,
-            "Description":req.body.Description,
-            "Price":req.body.Price
+        let newIncident = incidentModel({
+            "type":req.body.type,
+            "time":req.body.time,
+            "location":req.body.location,
+            "involvedParties":req.body.involvedParties,
+            "overview":req.body.overview,
+            "damages":req.body.damages,
+            "state":req.body.state
         });
-        Book.create(newIncident).then(()=>{
-            res.redirect('/incidentList');
+        incidentModel.create(newIncident).then(()=>{
+            res.redirect('incident/incidentList');
         })
     }
     catch(err)
@@ -74,14 +76,16 @@ router.post('/edit/:id',async(req,res,next)=>{
         let id=req.params.id;
         let updatedIncident = incidentModel({
             "_id":id,
-            "Name":req.body.Name,
-            "Author":req.body.Author,
-            "Published":req.body.Published,
-            "Description":req.body.Description,
-            "Price":req.body.Price
+            "type":req.body.type,
+            "time":req.body.time,
+            "location":req.body.location,
+            "involvedParties":req.body.involvedParties,
+            "overview":req.body.overview,
+            "damages":req.body.damages,
+            "state":req.body.state
         });
         incidentModel.findByIdAndUpdate(id,updatedIncident).then(()=>{
-            res.redirect('/incidentList')
+            res.redirect('incident/incidentList')
         })
     }
     catch(err){

@@ -8,14 +8,9 @@ TODO list:
     - time of incident
     - incident location
     - involved parties
-    - witnesses (can be removed most likely)
     - incident overview
-    - witness statements
     - damages (property, monetary, etc)
     - incident state (active or addressed)
-    - manager notes
-    - actions taken to correct
-    - etc
 2. create mongoDB database (William can do this as the current db.js links to his mongodb) ✔
 3. create home page
 4. update NAVBAR to properly link pages

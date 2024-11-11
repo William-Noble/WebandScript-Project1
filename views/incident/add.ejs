@@ -7,24 +7,32 @@
             <h1><%= title %></h1>
             <form class="form" method="POST">
                 <div class="form-group">
-                    <label for="nameTextField">Book Title</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Book Title" name="Name" required>
+                    <label for="typeTextField">Incident Type</label>
+                    <input type="text" class="form-control" id="typeTextField" placeholder="Enter incident type" name="type" value="<%= incidentModel.type %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="authorTextField">Book Author</label>
-                    <input type="text" class="form-control" id="authorTextField" placeholder="Enter the Book Author" name="Author" required>
+                    <label for="timeTextField">Incident Time</label>
+                    <input type="datetime-local" class="form-control" id="timeTextField" placeholder="Enter the time of the incident" name="time" value="<%= incidentModel.time %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="publishedTextField">Published</label>
-                    <input type="text" class="form-control" id="publishedTextField" placeholder="Enter the Published year" name="Published" required>
+                    <label for="locationTextField">Incident Location</label>
+                    <input type="text" class="form-control" id="locationTextField" placeholder="Enter location" name="location" value="<%= incidentModel.location %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="descriptionTextArea">Book Description</label>
-                    <textarea type="text" class="form-control" id="descriptionTextArea"  placeholder="enter the Book Description" name="Description" required></textarea>
+                    <label for="involvedPartiesTextField">Involved Parties</label>
+                    <input type="text" class="form-control" id="involvedPartiesTextField" placeholder="Enter involved parties" name="involvedParties" value="<%= incidentModel.involvedParties %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="priceTextField">Price</label>
-                    <input type="text" class="form-control" id="priceTextField" placeholder="Book's Price" name="Price" required>
+                    <label for="overviewTextField">Incident Overview</label>
+                    <input type="text" class="form-control" id="overviewTextField" placeholder="Enter incident overview" name="overview" value="<%= incidentModel.overview %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="damagesTextField">Incident Damages</label>
+                    <input type="text" class="form-control" id="damagesTextField" placeholder="Enter incident damages" name="damages" value="<%= incidentModel.damages %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="stateTextField">Incident State</label>
+                    <input type="text" class="form-control" id="stateTextField" placeholder="Enter incident state" name="state" value="<%= incidentModel.state %>" required>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit
                 <i class="fas fa-edit"></i></button>  
