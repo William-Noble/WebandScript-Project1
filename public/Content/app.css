@@ -27,3 +27,17 @@
     text-align: center;
     color: aliceblue;
 }
+
+button {
+    background-color: aliceblue;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+button:hover {
+    background-color: black;
+    color:aliceblue;
+}
