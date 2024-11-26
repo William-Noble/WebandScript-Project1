@@ -4,6 +4,14 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
+// require dependencies for passport-local
+let session = require('express-session');
+let passport = require('passport');
+let passportLocal = require('passport-local');
+// very important line below !!!
+let localStratagy = passportLocal.Strategy;
+let flash = require('connect-flash');
+
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let incidentRouter = require('../routes/incident')
@@ -18,9 +26,33 @@ mongoDB.on('error',console.error.bind(console,'Connection Error'))
 mongoDB.once('open',()=>{
   console.log('MongoDB Connected')
 })
-mongoose.connect(DB.URI,{useNewURIParser:true,
-  useUnifiedTopology:true
-})
+mongoose.connect(DB.URI,{useNewURIParser:true,useUnifiedTopology:true})
+
+// create session
+app.use(session({
+	secret:"SomeSecret",
+	saveUninitialized: false,
+	resave: false
+}))
+
+let cors = require('cors')
+let userModel = require('../model/user');
+let User = userModel.User;
+
+//implement a User Authentication
+passport.use(User.createStrategy());
+
+// serialize/deserialize user information
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+//initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//initialize the flash
+app.use(flash());
+
 // view engine setup
 app.set('../views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

@@ -1,0 +1,42 @@
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/main_nav.ejs') %>
+<div class="homeBody">
+	<main class="container" style="padding-top: 60px">
+		<!-- Message Area -->
+		<% if(message.length > 0){ %>
+			<div class="alert alert-danger">
+				<%= message %>
+			</div>
+		<% } %>
+		<div class="row">
+			<div class="offset-md-4 col-md-4">
+				<h1>Please login</h1>
+				<form method="post" autocomplete="off"> <!--Create login form-->
+					<br>
+					<fieldset class="form-group">
+						<label for="username">Username:</label>
+						<input type="text" class="form-control" name="username" placeholder="Enter the username" id="username" required autofocus>
+					</fieldset>
+					<br>
+					<fieldset class="form-group">
+						<label for="password">Password:</label>
+						<input type="password" class="form-control" name="password" placeholder="Enter the password" id="password" required>
+						<br>
+						or:
+						<br>
+						<a href="/register" class="btn btn-primary">Register Here</a> <!--register button-->
+					</fieldset>
+					<br>
+					<fieldset class="form-group d-flex justify-content-center">
+						<input type="submit" class="btn btn-success" value="Login"> <!--login button-->
+						&nbsp;&nbsp;&nbsp;
+						<a href="/">
+							<input type="button" class="btn btn-warning" value="Cancel"> <!--cancel button-->
+						</a>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</main>
+</div>
+<%- include('../partials/footer.ejs') %>
