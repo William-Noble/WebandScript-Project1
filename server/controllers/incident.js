@@ -8,16 +8,20 @@ let Incident = require('../model/incident');
 // function for displaying the incidents list
 module.exports.displayIncidentslist = async (req,res,next)=>{
     try{
-        const IncidentList = await incidentModel.find();
+        const IncidentList = await Incident.find();
         res.render('incident/incidentList',{
             title:'Incidents',
+            displayName: req.user ? req.user.displayName:'',
             IncidentList:IncidentList
         })
     }
     catch(err){
         console.error(err)
         res.render('incident/incidentList',{
-            error:'Error on Server'})
+            title:'Incidents',
+            displayName: req.user ? req.user.displayName:'',
+            error:'Error on Server',
+        })
     }
 };
 
