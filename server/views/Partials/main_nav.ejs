@@ -1,34 +1,61 @@
-  <!--Navbar-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Logo -->
     <div class="logo">
-        <img src="/Assets/Images/CerberusMgmt.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
-      </div>
-      <a class="navbar-brand" href="/">
-        &nbsp;INFR3120 Project - Group 1 
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <% if(title=="Home") { %>
-                <a class="nav-link active" href="/home">
-             <% } else { %>     
-              <a class="nav-link" href="/home">
-            <% } %>
-              <i class="fa-solid fa-house-chimney"></i> Home</a>
-          </li>
-          <li class="nav-item">
-            <% if(title=="Incidents" || title == "Add New Incident" || title == "Edit Incident") { %>
-              <a class="nav-link active" href="/incidents">
-            <% } else { %>  
-              <a class="nav-link" href="/incidents">
-            <% } %>
-              <i class="fa-solid fa-info"></i> Incidents</a>
-          </li>
-        </ul>
-      </div>
+      <img src="/Assets/Images/CerberusMgmt.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
     </div>
-  </nav>
+    <a class="navbar-brand" href="/">
+      &nbsp;INFR3120 Project - Group 1
+    </a>
+    <!-- Navbar toggler for small screens -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <!-- Home Link -->
+        <li class="nav-item">
+          <% if(title == "Home") { %>
+            <a class="nav-link active" href="/home">
+          <% } else { %>     
+            <a class="nav-link" href="/home">
+          <% } %>
+            <i class="fa-solid fa-house-chimney"></i> Home</a>
+        </li>
+        <!-- Incidents Link -->
+        <li class="nav-item">
+          <% if(title == "Incidents" || title == "Add New Incident" || title == "Edit Incident") { %>
+            <a class="nav-link active" href="/incidents">
+          <% } else { %>  
+            <a class="nav-link" href="/incidents">
+          <% } %>
+            <i class="fa-solid fa-info"></i> Incidents</a>
+        </li>
+        <!-- Login Button -->
+        <!--determine login status and display the appropriate button (login/logout)-->
+          <% if(typeof displayName=='string' && displayName) { %>
+            <li class="nav-item fs-3 py-3">
+              <a href="/logout" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+              </a>
+            </li>
+          <% } else { %>
+            <li class="nav-item fs-3 py-3">
+              <a href="/login" class="nav-link">
+                <i class="fas fa-sign-in-alt"></i>
+                Sign In
+              </a>
+            </li>
+          <% } %>
+        <% if(typeof displayName=='string' && displayName) { %>
+            &nbsp; &nbsp; 
+            <i class="fas fa-lg fa-user"></i>
+            Welcome, <%= displayName %>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
