@@ -29,7 +29,8 @@ module.exports.displayIncidentslist = async (req,res,next)=>{
 module.exports.displayAddPage = (req,res,next)=>{
     try{
         res.render('incident/add',{
-            title: 'Add New Incident'
+            title: 'Add New Incident',
+            displayName: req.user ? req.user.displayName:''
         })
     }
     catch(err)
@@ -44,7 +45,7 @@ module.exports.displayAddPage = (req,res,next)=>{
 // function for processing the post operation for the add page
 module.exports.processAddPage = (req,res,next)=>{
     try{
-        let newIncident = incidentModel({
+        let newIncident = Incident({
             "type":req.body.type,
             "time":req.body.time,
             "location":req.body.location,
@@ -53,7 +54,7 @@ module.exports.processAddPage = (req,res,next)=>{
             "damages":req.body.damages,
             "state":req.body.state
         });
-        incidentModel.create(newIncident).then(()=>{
+        Incident.create(newIncident).then(()=>{
             res.redirect('/incidents');
         })
     }
@@ -70,10 +71,11 @@ module.exports.processAddPage = (req,res,next)=>{
 module.exports.displayEditPage = async (req,res,next)=>{
     try{
         const id = req.params.id;
-        const incidentToEdit= await incidentModel.findById(id);
+        const incidentToEdit = await Incident.findById(id);
         res.render('incident/edit',
             {
                 title:'Edit Incident',
+                displayName: req.user ? req.user.displayName:'',
                 incidentModel:incidentToEdit
             }
         )
@@ -86,7 +88,7 @@ module.exports.displayEditPage = async (req,res,next)=>{
 };
 
 // function for processing the post operation on the edit page
-module.exports.processEditPage = async (req,res,next)=>{
+module.exports.processEditPage = (req,res,next)=>{
     try{
         let id=req.params.id;
         let updatedIncident = {
@@ -98,7 +100,7 @@ module.exports.processEditPage = async (req,res,next)=>{
             "damages":req.body.damages,
             "state":req.body.state
         };
-        await incidentModel.findByIdAndUpdate(id,updatedIncident).then(()=>{
+        Incident.findByIdAndUpdate(id,updatedIncident).then(()=>{
             res.redirect('/incidents')
         })
     }
@@ -114,7 +116,7 @@ module.exports.processEditPage = async (req,res,next)=>{
 module.exports.performDelete = (req,res,next)=>{
     try{
         let id=req.params.id;
-        incidentModel.deleteOne({_id:id}).then(()=>{
+        Incident.deleteOne({_id:id}).then(()=>{
             res.redirect('/incidents')
         })
     }

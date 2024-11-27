@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 let mongoose = require('mongoose');
+
 let incidentModel = require('../model/incident')
 let incidentController = require('../controllers/incident.js')
 

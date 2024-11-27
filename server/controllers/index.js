@@ -9,7 +9,10 @@ let indexController = require('../controllers/index');
 
 /* GET HOME page. */
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('index', { title: 'Home' });
+    res.render('index', {
+      title: 'Home',
+      displayName: req.user ? req.user.displayName:''
+    });
 };
 
 /* GET incident page. */
@@ -18,13 +21,23 @@ module.exports.displayHomePage = (req, res, next) => {
 // });
 
 /* GET LOGIN page. */
-module.exports.displayLoginPage = (req, res, next) => {
-    res.render('./Auth/login.ejs', {
-        title: 'Login',
-        message: req.flash('loginMessage') || '',
-        displayName: req.user ? req.user.displayName : ''
+module.exports.displayLoginPage = (req,res,next) => {
+	if(!req.user) //use small u in user here
+	{
+    res.render('Auth/login',
+    {
+      title:'Login',
+      message:req.flash('loginMessage'),
+      displayName: req.user ? req.user.displayName:''
     });
+	}
+	else
+	{
+		return res.redirect('/')
+	}
 };
+
+// post operation for login page
 module.exports.processLoginPage = (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err) {
@@ -38,9 +51,9 @@ module.exports.processLoginPage = (req, res, next) => {
             if (err) {
                 return next(err)
             }
-            return res.redirect('/incidentslist');
+            return res.redirect('/');
         })
-    })
+    }) (req,res,next)
 };
 
 /* GET REGISTER page. */
@@ -55,10 +68,6 @@ module.exports.displayRegisterPage = (req, res, next) => {
     else {
         return res.redirect('/')
     }
-    res.render('./Auth/register.ejs', {
-        title: 'Register',
-        message: req.flash('registerMessage')
-    });
 };
 module.exports.processRegisterPage = (req, res, next) => {
     let newUser = new User({
