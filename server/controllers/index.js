@@ -96,6 +96,7 @@ module.exports.processRegisterPage = (req, res, next) => {
         }
     })
 };
+
 module.exports.performLogout = (req, res, next) => {
     req.logOut(function (err) {
         if (err) {
