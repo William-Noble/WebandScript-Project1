@@ -5,29 +5,42 @@
 <body class = "home-page">
 <main>
   <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-      <h1 class="display-6" style="font-family:verdana;">
-      <%=title%></h1>
-      </div>
-    <div class = "homeWrapper">
-    <p style="font-family:sans-serif;">Welcome the our Incident Management system.<br>
-    <br>Effortlesly manage and track incidents with our user-friendly platform.<br>
-    Our system allows you to:
-    <ul style= "margin=0px;">
-    <li>Log Incidents: Record details like type, time, location, and involved parties.</li>
-    <li>Comprehensive Overview: Document damages and the state of the incident.</li>
-    <li>Manage Records: Update or delete records.</li>
-    </ul>
-    <p>To get started:<p>
-    <button onclick="window.location.href='/register'">Register</button><br>
-    <p>If you already have an account with us,<p> 
-    <button onclick="window.location.href='/login'">Login</button><br>
-   
+    <div class="container">
+        <h1 class="display-6" style="font-family:verdana;">
+        <%=title%></h1>
+        </div>
+      <div class = "homeWrapper">
+      <p style="font-family:sans-serif;">Welcome to our Incident Management system.</p>
+      <br>
+      <p>Effortlesly manage and track incidents with our user-friendly platform.</p>
+      <br>
+      <p>Our system allows you to:</p>
+      <ul style= "margin=0px;">
+        <li>Log Incidents: Record details like type, time, location, and involved parties.</li>
+        <li>Comprehensive Overview: Document damages and the state of the incident.</li>
+        <li>Manage Records: Update or delete records.</li>
+      </ul>
+      <% if(typeof displayName=='string' && displayName) { %>
+
+      <% } else { %>
+        <p>To get started:<p>
+        <a href="/register">
+          <button class="btn btn-primary">Register</button>
+        </a>
+        <br>
+        <p>If you already have an account with us,<p> 
+        <a href="/login">
+          <button class="btn btn-success">Login</button>
+        </a>
+        <br>
+      <% } %>
     </div>
     
-<div class = "imageWrapper">
-      <img src= "/Assets/Images/incidentImg.jpg" alt="image"/>
-</div>
-
-    
+    <div class="imageWrapper">
+      <a href="/incidents">
+        <img src="/Assets/Images/incidentImg.jpg" class="checklistImage" alt="checklist icon"/>
+      </a>
+    </div>
+  </div>
+</main>
 <%- include('Partials/footer.ejs') %>
