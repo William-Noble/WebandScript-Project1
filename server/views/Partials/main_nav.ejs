@@ -8,6 +8,12 @@
     <a class="navbar-brand" href="/">
       &nbsp;INFR3120 Project - Group 1
     </a>
+    <% if(typeof displayName=='string' && displayName) { %>
+      <div class="navbar-brand">
+        <i class="fas fa-lg fa-user"></i>
+        Welcome, <%= displayName %>
+      </div>
+    <% } %>
     <!-- Navbar toggler for small screens -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,25 +42,20 @@
         <!-- Login Button -->
         <!--determine login status and display the appropriate button (login/logout)-->
           <% if(typeof displayName=='string' && displayName) { %>
-            <li class="nav-item fs-3 py-3">
+            <li class="nav-item">
               <a href="/logout" class="nav-link">
                 <i class="fas fa-sign-out-alt"></i>
                 Logout
               </a>
             </li>
           <% } else { %>
-            <li class="nav-item fs-3 py-3">
+            <li class="nav-item">
               <a href="/login" class="nav-link">
                 <i class="fas fa-sign-in-alt"></i>
                 Sign In
               </a>
             </li>
           <% } %>
-        <% if(typeof displayName=='string' && displayName) { %>
-            &nbsp; &nbsp; 
-            <i class="fas fa-lg fa-user"></i>
-            Welcome, <%= displayName %>
-        <% } %>
       </ul>
     </div>
   </div>
