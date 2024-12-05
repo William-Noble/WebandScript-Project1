@@ -26,4 +26,7 @@ Citations:
 qqq. (2018). How can i sort 3 dimensional array in javascript? Retrieved from https://stackoverflow.com/questions/48766704/how-can-i-sort-3-dimensional-array-in-javascript
 
 Phrogz. (2012). How to sort an object array by date property? Retrieved from https://stackoverflow.com/questions/10123953/how-to-sort-an-object-array-by-date-property
+
+W3Schools.com. (n.d.). Retrieved from https://www.w3schools.com/
+
 # this list is incomplete

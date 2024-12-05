@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <label for="overviewTextField"style = "color:white">Incident Overview</label>
-                    <input type="text" class="form-control" id="overviewTextField" placeholder="Enter incident overview" name="overview" value="<%= incidentModel.overview %>" required>
+                    <textarea type="text" class="form-control" id="overviewTextField" placeholder="Enter incident overview" name="overview" required><%= incidentModel.overview %></textarea>
                 </div>
                 <div class="form-group">
                     <label for="damagesTextField"style = "color:white">Incident Damages</label>
@@ -45,8 +45,10 @@
                         <option value="Addressed" <%= incidentModel.state === 'Addressed' ? 'selected' : '' %>>Addressed</option> <!-- determines if the current state is Addressed or if this option if selected and passes the value "Addressed"-->
                     </select>
                 </div>
+                <br>
                 <button class="btn btn-primary" type="submit">Submit
-                <i class="fas fa-edit"></i></button>  
+                <i class="fas fa-edit"></i></button>
+                &nbsp;
                 <button class="btn btn-warning" type="button" 
                  onclick="window.history.back()">Cancel
                     <i class="fas fa-undo"></i></button>    
