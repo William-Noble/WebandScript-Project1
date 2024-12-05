@@ -31,7 +31,7 @@
 button {
     background-color: aliceblue;
     color: black;
-    padding: 10px 20px;
+    padding: 10px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -40,4 +40,38 @@ button {
 button:hover {
     background-color: black;
     color:aliceblue;
+}
+
+
+body {
+    margin: 0; 
+    padding: 0; 
+    min-height: 100vh; 
+    background: linear-gradient(180deg, #3A3959, #262525); 
+    color: #ffffff; 
+
+}
+
+.container {
+    width: 100vw; 
+    height: 100vh; 
+    padding: 20px; 
+}
+
+.homeWrapper ul{
+    text-align: left;
+    translate: 85px;
+}
+
+.home-page .imageWrapper {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
+}
+
+.home-page .imageWrapper img {
+    width: 300px;
+    height: 300px;
+
 }

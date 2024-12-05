@@ -10,20 +10,24 @@
       <%=title%></h1>
       </div>
     <div class = "homeWrapper">
-    <p style="font-family:sans-serif;">Welcome to our <%= title %> page for the first part of the Project.<br><br>
-    <br>We have decided to create an incident management site, where the user can create, update, and delete incidents from a database.<br>
-    <br>An incident can be created, updated/edited, or deleted on the 'Incidents' page.<br>
-    <br>To go to the Incidents page, simply...<br><br>
-    <button onclick="window.location.href='/incidents'">Click Here</button>
-    <br><br>A list of incidents reported previously will appear, which can be edited to deleted.<br>
-    <br>Click 'Add Incident' to create a new Incident. Details such as the incident type, time,
-    location, involved parties, overview, damages, and state of the incident need to be filled out before it can be submitted.<br>
-    </p>
+    <p style="font-family:sans-serif;">Welcome the our Incident Management system.<br>
+    <br>Effortlesly manage and track incidents with our user-friendly platform.<br>
+    Our system allows you to:
+    <ul style= "margin=0px;">
+    <li>Log Incidents: Record details like type, time, location, and involved parties.</li>
+    <li>Comprehensive Overview: Document damages and the state of the incident.</li>
+    <li>Manage Records: Update or delete records.</li>
+    </ul>
+    <p>To get started:<p>
+    <button onclick="window.location.href='/register'">Register</button><br>
+    <p>If you already have an account with us,<p> 
+    <button onclick="window.location.href='/login'">Login</button><br>
+   
     </div>
     
-    <!--<div class = "imageWrapper">
-      <img src= "" alt="image"/>
-    </div><-->
+<div class = "imageWrapper">
+      <img src= "/Assets/Images/incidentImg.jpg" alt="image"/>
+</div>
 
     
 <%- include('Partials/footer.ejs') %>
