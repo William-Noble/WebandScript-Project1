@@ -25,6 +25,26 @@ module.exports.displayIncidentslist = async (req,res,next)=>{
     }
 };
 
+// function for displaying incident details page
+module.exports.displayIncidentDetail = async (req,res,next)=>{
+    try{
+        const id = req.params.id;
+        const incidentToView = await Incident.findById(id);
+        res.render('incident/incidentDetail',
+            {
+                title:'Incident Details',
+                displayName: req.user ? req.user.displayName:'',
+                incidentModel:incidentToView
+            }
+        )
+    }
+    catch(err)
+    {
+        console.error(err);
+        next(err); // passing the error
+    }
+};
+
 // function for displaying the add page
 module.exports.displayAddPage = (req,res,next)=>{
     try{

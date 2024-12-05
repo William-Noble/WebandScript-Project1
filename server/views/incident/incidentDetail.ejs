@@ -1,0 +1,52 @@
+<%- include('../Partials/header.ejs')%>
+<%- include('../Partials/main_nav.ejs')%>
+<main class="container">
+    <h1 style = "color:white"><%= title %></h1><br>
+    <div>
+        <button class="btn btn-warning" type="button" onclick="window.history.back()">Back
+            <i class="fas fa-undo"></i>
+        </button>
+        <% if(typeof displayName=='string' && displayName) { %>
+            &nbsp;
+            <a href="/incidents/edit/<%= incidentModel._id%>" class="btn btn-primary">
+                <i class="fas fa-pencil-alt"></i>Edit
+            </a>
+            &nbsp;
+            <a href="/incidents/delete/<%= incidentModel._id%>" class="btn btn-danger">
+                <i class="fas fa-trash-alt"></i>Delete
+            </a>
+        <% } %>
+        <br><br>
+    <div>
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th class="text-center col-3">Type</th>
+            <td class=" col-9 text-wrap text-break"><%= incidentModel.type %></td>
+        </tr>
+        <tr>
+            <th class="text-center col-3">Time</th>
+            <td class=" col-9 text-wrap text-break"><%= incidentModel.time %></td>
+        </tr>
+        <tr>
+            <th class="text-center col-3">Location</th>
+            <td class=" col-9 text-wrap text-break"><%= incidentModel.location %></td>
+        </tr>
+        <tr>
+            <th class="text-center col-3">Involved Parties</th>
+            <td class=" col-9 text-wrap text-break"><%= incidentModel.involvedParties %></td>
+        </tr>
+        <tr>
+            <th class="text-center col-3">Overview</th>
+            <td class=" col-9 text-wrap text-break"><%= incidentModel.overview %></td>
+        </tr>
+        <tr>
+            <th class="text-center col-3">Damages</th>
+            <td class=" col-9 text-wrap text-break"><%= incidentModel.damages %></td>
+        </tr>
+        <tr>
+            <th class="text-center col-3">Incident Status</th>
+            <td class=" col-9 text-wrap"><%= incidentModel.state %></td>
+        </tr>  
+    </table>
+</main>
+<%- include('../Partials/footer.ejs')%>
