@@ -3,17 +3,17 @@
 <main class="container">
     <h1 style = "color:white"><%= title %></h1><br>
     <div>
-        <button class="btn btn-warning" type="button" onclick="window.history.back()">Back
-            <i class="fas fa-undo"></i>
+        <button class="btn btn-warning" type="button" onclick="window.history.back()">
+            <i class="fas fa-undo"></i> Back
         </button>
         <% if(typeof displayName=='string' && displayName) { %>
             &nbsp;
             <a href="/incidents/edit/<%= incidentModel._id%>" class="btn btn-primary">
-                <i class="fas fa-pencil-alt"></i>Edit
+                <i class="fas fa-pencil-alt"></i> Edit
             </a>
             &nbsp;
             <a href="/incidents/delete/<%= incidentModel._id%>" class="btn btn-danger">
-                <i class="fas fa-trash-alt"></i>Delete
+                <i class="fas fa-trash-alt"></i> Delete
             </a>
         <% } %>
         <br><br>
