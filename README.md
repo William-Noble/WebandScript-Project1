@@ -18,8 +18,12 @@ TODO list:
 3. create home page ✔
 4. update NAVBAR to properly link pages ✔
 5. create an option next to each element on /incidents to view full incident report (only show full details of 1 incident instead of a summery of all incidents)
-6. display incidents sorted by active and most recent first
+6. display incidents sorted by active and most recent first ✔
 7. develop backend to perform CRUD operations ✔
 8. make it look semi readable (does not have to be good) ✔
 
+Citations:
+qqq. (2018). How can i sort 3 dimensional array in javascript? Retrieved from https://stackoverflow.com/questions/48766704/how-can-i-sort-3-dimensional-array-in-javascript
+
+Phrogz. (2012). How to sort an object array by date property? Retrieved from https://stackoverflow.com/questions/10123953/how-to-sort-an-object-array-by-date-property
 # this list is incomplete
