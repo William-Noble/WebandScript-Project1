@@ -9,6 +9,23 @@ let Incident = require('../model/incident');
 module.exports.displayIncidentslist = async (req,res,next)=>{
     try{
         const IncidentList = await Incident.find();
+
+        // sort incidents list by state and date time fields
+
+        IncidentList.sort(
+            (a, b) => {
+                // sort by active state first
+                // https://stackoverflow.com/questions/48766704/how-can-i-sort-3-dimensional-array-in-javascript
+                if (a.state === 'Active' && b.state !== 'Active') return -1;
+                if (a.state !== 'Active' && b.state === 'Active') return 1;
+                //sort elements by most recent first if they are both the same state
+                // https://stackoverflow.com/questions/10123953/how-to-sort-an-object-array-by-date-property
+                if (new Date(a.time) < new Date(b.time)) return 1;
+                if (new Date(a.time) > new Date(b.time)) return -1;
+                // if both previous fields are identical, do not change order
+                return 0;
+            }
+        )
         res.render('incident/incidentList',{
             title:'Incidents',
             displayName: req.user ? req.user.displayName:'',

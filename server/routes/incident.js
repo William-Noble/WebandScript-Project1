@@ -18,7 +18,7 @@ function requireAuth(req,res,next)
 /* Read Operation --> Get route for displaying the incidents list */
 router.get('/',incidentController.displayIncidentslist)
 
-router.get('/incidentDetail/:id',requireAuth,incidentController.displayIncidentDetail);
+router.get('/incidentDetail/:id',incidentController.displayIncidentDetail);
 
 /* Create Operation --> Get route for displaying the Add Page */
 router.get('/add',requireAuth,incidentController.displayAddPage);

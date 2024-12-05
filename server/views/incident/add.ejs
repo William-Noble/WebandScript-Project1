@@ -8,7 +8,14 @@
             <form class="form" method="POST">
                 <div class="form-group">
                     <label for="typeTextField" style = "color:white">Incident Type</label>
-                    <input type="text" class="form-control" id="typeTextField" placeholder="Enter incident type" name="type" required>
+                    <select type="text" class="form-control" id="typeTextField" placeholder="Enter incident type" name="type" required>
+                        <option value="Verbal Altercation">Verbal Altercation</option>
+                        <option value="Physical Altercation">Physical Altercation</option>
+                        <option value="Property Damage">Property Damage</option>
+                        <option value="Human Error">Human Error</option>
+                        <option value="Workplace Injury">Workplace Injury</option>
+                        <option value="Other">Other</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="timeTextField"style = "color:white">Incident Time</label>
@@ -32,7 +39,10 @@
                 </div>
                 <div class="form-group">
                     <label for="stateTextField"style = "color:white">Incident State</label>
-                    <input type="text" class="form-control" id="stateTextField" placeholder="Enter incident state" name="state" required>
+                    <select type="text" class="form-control" id="stateTextField" placeholder="Enter incident state" name="state" required>
+                        <option value="Active">Active</option>
+                        <option value="Addressed">Addressed</option>
+                    </select>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit
                 <i class="fas fa-edit"></i></button>  

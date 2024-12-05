@@ -13,32 +13,26 @@
         <table class="table table-bordered table-striped table-hover">
             <!--Table Header-->
             <tr>
-                <!--Change table layout depending on if the user is authenticated-->
-                <% if(typeof displayName=='string' && displayName) { %>
-                    <th class="text-center col-2">Type</th>
-                    <th class="text-center col-3">Time</th>
-                    <th class="text-center col-2">Location</th>
-                    <th class="col-5">Overview</th>
-                    <th class="text-center col-2">Incident Status</th>
-                    <th class="text-center col-2">Details</th>
-                <% } %>
+                <th class="text-center col-2">Type</th>
+                <th class="text-center col-3">Time</th>
+                <th class="text-center col-2">Location</th>
+                <th class="text-center col-5">Overview</th>
+                <th class="text-center col-2">Incident Status</th>
+                <th class="text-center col-2">Details</th>
             </tr>
             <!--iterate through the assignmentslist sorted by date and print values into table-->
             <% for(let count=0;count<IncidentList.length;count++) { %>
             <tr>
-                <!--only display edit/delete buttons for authenticated users-->
-                <% if(typeof displayName=='string' && displayName) { %>
-                    <td class="text-center col-2 text-wrap text-break"><%= IncidentList[count].type %></td>
-                    <td class="text-center col-3 text-wrap text-break"><%= IncidentList[count].time %></td>
-                    <td class="text-center col-2 text-wrap text-break"><%= IncidentList[count].location %></td>
-                    <td class="col-5 text-wrap text-break"><%= IncidentList[count].overview %></td>
-                    <td class="text-center col-3 text-wrap"><%= IncidentList[count].state %></td>
-                    <td class="text-center col-1">
-                        <a href="/incidents/incidentDetail/<%= IncidentList[count]._id%>" class="btn btn-info btn-sm">
-                            <i class="fas fa-pencil-alt"></i>Details
-                        </a>
-                    </td>
-                <% } %>
+                <td class="text-center col-2 text-wrap text-break"><%= IncidentList[count].type %></td>
+                <td class="text-center col-3 text-wrap text-break"><%= IncidentList[count].time %></td>
+                <td class="text-center col-2 text-wrap text-break"><%= IncidentList[count].location %></td>
+                <td class="col-5 text-wrap text-break"><%= IncidentList[count].overview %></td>
+                <td class="text-center col-3 text-wrap"><%= IncidentList[count].state %></td>
+                <td class="text-center col-1">
+                    <a href="/incidents/incidentDetail/<%= IncidentList[count]._id%>" class="btn btn-info btn-sm">
+                        <i class="fas fa-pencil-alt"></i>Details
+                    </a>
+                </td>
             </tr>
             <% } %>
         </table>
