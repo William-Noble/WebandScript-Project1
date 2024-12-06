@@ -6,33 +6,58 @@
 <main>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-6" style="font-family:verdana;">
+        <h1 class="display-6" style="font-family:verdana;"> 
         <%=title%></h1>
         </div>
+        <br><br>
+        <div class="imageWrapper2">
+            <img src="/Assets/Images/csbanner.png" class="bannerImage" alt="team banner"/>
+        </div>
+        <br><br>
       <div class = "homeWrapper">
-      <p style="font-family:sans-serif;">Welcome to our Incident Management system.</p>
+      <div class="row" style="font-style:italic;">
+        <div class="col">
+          <h3 style="font-style:bold;">Centralized Communication and Coordination</h3>
+          <br>
+          <p style="text-align: left;">During incidents, miscommunication and lack of clarity can escalate problems. An incident management site provides a single platform where all stakeholders—team members, clients, and management—can access real-time updates, action plans, and resolution timelines.</p>
+        </div>
+        <div class="col">
+          <h2 style="font-style:bold;">Faster Incident Resolution</h2>
+          <br><br>
+          <p style="text-align: left;">Time is critical when addressing issues. An incident management site streamlines workflows by organizing reports, assigning tasks, tracking progress, and automating alerts to ensure swift action.</p>
+        </div>
+        <div class="col">
+          <h3 style="font-style:bold;">Improved Accountability and Transparency</h3>
+          <br>
+          <p style="text-align: left;">Keeping records of incidents, their causes, and resolutions is crucial for accountability and future prevention. Such a platform logs all activities, making it easier to analyze trends, identify root causes, and implement preventative measures.</p>
+        </div>
+      </div>
+      <br><br><br>
+      <h4 style="font-style:italic; font-style:bold;">Our system allows you to effortlessly manage and track incidents with our user-friendly platform:</h4>
       <br>
-      <p>Effortlesly manage and track incidents with our user-friendly platform.</p>
-      <br>
-      <p>Our system allows you to:</p>
-      <ul style= "margin=0px;">
-        <li>Log Incidents: Record details like type, time, location, and involved parties.</li>
-        <li>Comprehensive Overview: Document damages and the state of the incident.</li>
-        <li>Manage Records: Update or delete records.</li>
+      <ul>
+        <li>Log Incidents - Record details like type, time, location, and involved parties.</li>
+        <li>Comprehensive Overview - Document damages and the state of the incident.</li>
+        <li>Manage Records - Update or delete records.</li>
       </ul>
+      <br><br><br>
       <% if(typeof displayName=='string' && displayName) { %>
 
       <% } else { %>
-        <p>To get started:<p>
-        <a href="/register">
-          <button class="btn btn-primary">Register</button>
-        </a>
-        <br>
-        <p>If you already have an account with us,<p> 
-        <a href="/login">
-          <button class="btn btn-success">Login</button>
-        </a>
-        <br>
+        <div class="row">
+          <div class="col">
+            <h4 style="font-style:italic;">To Get Started:<h4>
+              <a href="/register">
+                <button class="btn btn-primary">Register</button>
+              </a>
+          </div>
+          <div class="col">
+            <h4 style="font-style:italic;">Already Have An Account With Us?<h4> 
+              <a href="/login">
+                <button class="btn btn-success">Login</button>
+              </a>
+          </div>
+        </div>
       <% } %>
     </div>
     
@@ -41,6 +66,9 @@
         <img src="/Assets/Images/incidentImg.jpg" class="checklistImage" alt="checklist icon"/>
       </a>
     </div>
+
+    <br><br>
+
   </div>
 </main>
 <%- include('partials/footer.ejs') %>
