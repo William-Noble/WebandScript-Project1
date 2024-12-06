@@ -15,12 +15,11 @@ router.get('/home', indexController.displayHomePage);
 router.get('/login', indexController.displayLoginPage);
 /* POST Login page. */
 router.post('/login', indexController.processLoginPage);
-
-router.get('/auth/github',
-    passport.authenticate('github', { scope: [ 'user:email' ] }));
-  
+// send user to GitHub for authentication
+router.get('/auth/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
+// authenticate github response
 router.get('/auth/github/callback', 
-    passport.authenticate('github', { failureRedirect: '/login' }),
+    passport.authenticate('github', { failureRedirect: '/login' }), // if authentication fails redirect back to login
     function(req, res) {
         // Successful authentication, redirect home.
         res.redirect('/');

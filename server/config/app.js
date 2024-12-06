@@ -51,24 +51,29 @@ passport.use(new GitHubStrategy({
   callbackURL: process.env.GITHUB_CALLBACK_URL
 }, async (accessToken, refreshToken, profile, done) => {
   try {
+    // check if email is being given
     let email = '';
     if (profile.emails && profile.emails.length > 0) {
-      email = profile.emails[0].value;
+      email = profile.emails[0].value; // assign github email to email variable if it is set
     }
+    // use username as backup if displayname does not exist
     let displayName = profile.displayName || profile.username
+
+    // check if the user account has already been created
     let user = await User.findOne({ githubId: profile.id });
+
+    // if user has not been found, create a new user
     if (!user) {
       user = await User.create({
-        githubId: profile.id,
-        username: profile.username,
-        displayName: displayName || 'no-displayName',
-        email: email || 'no-email',
-        created: new Date()
+        githubId: profile.id, // get profile id from github
+        username: profile.username, // get github username
+        displayName: displayName || 'no-displayName', // use display name or fall back to no-displayname
+        email: email || 'no-email', // user github email or fallback on no-email
       });
     }
-    return done(null, user);
+    return done(null, user); // return the user (created or found)
   } catch (err) {
-    return done(err);
+    return done(err); // return the error if there is an issue with teh user
   }
 }));
 
