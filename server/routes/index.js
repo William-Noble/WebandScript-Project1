@@ -15,6 +15,26 @@ router.get('/home', indexController.displayHomePage);
 router.get('/login', indexController.displayLoginPage);
 /* POST Login page. */
 router.post('/login', indexController.processLoginPage);
+
+router.get('/auth/github',
+    passport.authenticate('github', { scope: [ 'user:email' ] }));
+  
+router.get('/auth/github/callback', 
+    passport.authenticate('github', { failureRedirect: '/login' }),
+    function(req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/');
+});
+// router.get('/auth/google',
+//     passport.authenticate('google', { scope: ['profile'] }));
+  
+// router.get('/auth/google/callback', 
+//     passport.authenticate('google', { failureRedirect: '/login' }),
+//     function(req, res) {
+//         // Successful authentication, redirect home.
+//         res.redirect('/');
+// });
+
 /* GET Register page. */
 router.get('/register', indexController.displayRegisterPage);
 /* POST Register page. */

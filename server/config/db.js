@@ -1,1 +1,1 @@
-module.exports = {"URI":"mongodb+srv://proj1-websiteaccess:QKDOgRKLDmFowlDi@cluster0.vwbjn.mongodb.net/Project1?retryWrites=true&w=majority&appName=Cluster0"}
+module.exports = {"URI": process.env.DB}

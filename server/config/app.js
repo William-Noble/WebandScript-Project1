@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
@@ -9,7 +11,9 @@ let session = require('express-session');
 let passport = require('passport');
 let passportLocal = require('passport-local');
 // very important line below !!!
-let localStratagy = passportLocal.Strategy;
+let localStrategy = passportLocal.Strategy;
+var GitHubStrategy = require('passport-github2').Strategy;
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
 let flash = require('connect-flash');
 
 let indexRouter = require('../routes/index');
@@ -26,7 +30,7 @@ mongoDB.on('error',console.error.bind(console,'Connection Error'))
 mongoDB.once('open',()=>{
   console.log('MongoDB Connected')
 })
-mongoose.connect(DB.URI,{useNewURIParser:true,useUnifiedTopology:true})
+mongoose.connect(DB.URI,{useNewUrlParser:true,useUnifiedTopology:true})
 
 // create session
 app.use(session({
@@ -41,6 +45,50 @@ let User = userModel.User;
 
 //implement a User Authentication
 passport.use(User.createStrategy());
+passport.use(new GitHubStrategy({
+  clientID: process.env.GITHUB_CLIENT_ID,
+  clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  callbackURL: process.env.GITHUB_CALLBACK_URL
+}, async (accessToken, refreshToken, profile, done) => {
+  try {
+    let user = await User.findOne({ githubId: profile.id });
+    if (!user) {
+      user = await User.create({
+        githubId: profile.id,
+        username: profile.username,
+        displayName: profile.displayName,
+        email: profile.emails[0].value, // Ensure profile.emails is an array and access the first email
+        dateCreated: new Date()
+      });
+    }
+    return done(null, user);
+  } catch (err) {
+    return done(err);
+  }
+}));
+
+
+// to scared to delete this right now
+// function(accessToken, refreshToken, profile, done) {
+//   User.findOrCreate({ githubId: profile.id }, function (err, user) {
+//     return done(err, user);
+//   });
+// }
+//));
+
+// attempt at google authentication, TODO
+// passport.use(new GoogleStrategy({
+//   clientID: GOOGLE_CLIENT_ID,
+//   clientSecret: GOOGLE_CLIENT_SECRET,
+//   callbackURL: "http://www.example.com/auth/google/callback"
+// },
+// function(accessToken, refreshToken, profile, cb) {
+//   User.findOrCreate({ googleId: profile.id }, function (err, user) {
+//     return cb(err, user);
+//   });
+// }
+// ));
+
 
 // serialize/deserialize user information
 passport.serializeUser(User.serializeUser());
