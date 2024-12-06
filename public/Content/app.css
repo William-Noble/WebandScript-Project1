@@ -2,8 +2,6 @@
 
 .home-page {
     background: linear-gradient(180deg, #3A3959, #262525); 
-    height: 100vh; 
-    
 }
 
 .home-page h1{
@@ -78,4 +76,34 @@ body {
 
 .checklistImage {
     border-radius: 50px;
+    transition: transform .2s;
+}
+
+.checklistImage:hover {
+    transform:scale(1.1);
+}
+
+.home-page .imageWrapper2 {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
+}
+
+.home-page .imageWrapper2 img {
+    width:600px;
+    height:300px;
+}
+
+.bannerImage {
+    border-radius: 50px;
+    transition: transform .2s;
+}
+
+.bannerImage:hover {
+    transform:scale(1.1);
+}
+
+.logo img {
+    border-radius: 5px;
 }
