@@ -52,12 +52,13 @@ passport.use(new GitHubStrategy({
 }, async (accessToken, refreshToken, profile, done) => {
   try {
     let user = await User.findOne({ githubId: profile.id });
+
     if (!user) {
       user = await User.create({
         githubId: profile.id,
         username: profile.username,
         displayName: profile.displayName,
-        email: profile.emails[0].value || '',
+        //email: profile.emails[0].value || '',
         created: new Date()
       });
     }
