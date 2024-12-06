@@ -57,8 +57,8 @@ passport.use(new GitHubStrategy({
         githubId: profile.id,
         username: profile.username,
         displayName: profile.displayName,
-        email: profile.emails[0].value, // Ensure profile.emails is an array and access the first email
-        dateCreated: new Date()
+        email: profile.emails[0].value || '',
+        created: new Date()
       });
     }
     return done(null, user);
