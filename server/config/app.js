@@ -57,8 +57,8 @@ passport.use(new GitHubStrategy({
       user = await User.create({
         githubId: profile.id,
         username: profile.username,
-        displayName: profile.displayName,
-        //email: profile.emails[0].value || '',
+        displayName: profile.displayName || 'no',
+        email: profile.emails[0].value || 'no',
         created: new Date()
       });
     }

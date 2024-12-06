@@ -2,6 +2,11 @@ let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
 // define schema for User information
 let User = mongoose.Schema({
+	githubId:
+	{
+		type:String,
+		default:""
+	},
 	username:
 	{
 		type:String,
@@ -46,6 +51,6 @@ let User = mongoose.Schema({
 })
 
 // configure options for user model
-let options = ({MissiongPasswordError:'Wrong/Missing Password'});
+let options = ({MissingPasswordError:'Wrong/Missing Password'});
 User.plugin(passportLocalMongoose, options);
 module.exports.User = mongoose.model('User',User);
