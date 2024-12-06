@@ -29,4 +29,5 @@ Phrogz. (2012). How to sort an object array by date property? Retrieved from htt
 
 W3Schools.com. (n.d.). Retrieved from https://www.w3schools.com/
 
+MikeSmithDev. (2013). What is function User.findOrCreate doing and when is it called in passport? Retrieved from https://stackoverflow.com/questions/20431049/what-is-function-user-findorcreate-doing-and-when-is-it-called-in-passport
 # this list is incomplete

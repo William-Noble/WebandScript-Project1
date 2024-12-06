@@ -60,7 +60,7 @@ passport.use(new GitHubStrategy({
     let displayName = profile.displayName || profile.username
 
     // check if the user account has already been created
-    let user = await User.findOne({ githubId: profile.id });
+    let user = await User.findOne({ githubId: profile.id }); // https://stackoverflow.com/questions/20431049/what-is-function-user-findorcreate-doing-and-when-is-it-called-in-passport
 
     // if user has not been found, create a new user
     if (!user) {
