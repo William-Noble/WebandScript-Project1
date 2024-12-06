@@ -51,14 +51,18 @@ passport.use(new GitHubStrategy({
   callbackURL: process.env.GITHUB_CALLBACK_URL
 }, async (accessToken, refreshToken, profile, done) => {
   try {
+    let email = '';
+    if (profile.emails && profile.emails.length > 0) {
+      email = profile.emails[0].value;
+    }
+    let displayName = profile.displayName || profile.username
     let user = await User.findOne({ githubId: profile.id });
-
     if (!user) {
       user = await User.create({
         githubId: profile.id,
         username: profile.username,
-        displayName: profile.displayName || 'no',
-        email: profile.emails[0].value || 'no',
+        displayName: displayName || 'no-displayName',
+        email: profile.emails[0].value || 'no-email',
         created: new Date()
       });
     }
