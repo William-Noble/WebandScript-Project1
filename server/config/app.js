@@ -62,7 +62,7 @@ passport.use(new GitHubStrategy({
         githubId: profile.id,
         username: profile.username,
         displayName: displayName || 'no-displayName',
-        email: profile.emails[0].value || 'no-email',
+        email: email || 'no-email',
         created: new Date()
       });
     }
